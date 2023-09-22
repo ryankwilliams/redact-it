@@ -1,0 +1,15 @@
+# IDE
+.idea
+.vscode
+
+# Python compiled files
+*.py[cod]
+
+# Python packaging
+*.egg-info
+build/*
+dist/*
+
+
+# Python Virtual Environments
+venv/*

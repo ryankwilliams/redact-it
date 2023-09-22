@@ -1,0 +1,22 @@
+name: PR-Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  # Allow the ability to manually run this action
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install python requirements
+        run: pip install pre-commit
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files --show-diff-on-failure

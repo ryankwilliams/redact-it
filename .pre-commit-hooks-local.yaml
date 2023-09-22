@@ -1,0 +1,11 @@
+repos:
+- repo: local
+  hooks:
+    - id: redact-it
+      name: Redact it
+      description: This hook redacts sensitive information from data files.
+      entry: redact-it
+      language: python
+      types: [ text ]
+      pass_filenames: false
+      args: [ --config=config.yml ]
