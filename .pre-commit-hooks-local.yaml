@@ -1,11 +1,11 @@
 repos:
 - repo: local
   hooks:
-    - id: redact-it
-      name: Redact it
-      description: This hook redacts sensitive information from data files.
-      entry: redact-it
+    - id: redact-it-yaml
+      name: Redact it yaml
+      description: This hook redacts sensitive information from yaml files.
+      entry: redact-it yaml
       language: python
       types: [ text ]
       pass_filenames: false
-      args: [ --config=config.yml ]
+      args: [ --config=redact-it-config.yml,  --file-path=assets/*.yml]
