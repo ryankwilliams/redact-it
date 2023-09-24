@@ -1,7 +1,7 @@
-- id: redact-it
-  name: Redact it
+- id: redact-it-yaml
+  name: Redact data from yaml files
   description: This hook redacts sensitive information from data files.
-  entry: redact-it
+  entry: redact-it yaml
   language: python
   types: [text]
   pass_filenames: false
