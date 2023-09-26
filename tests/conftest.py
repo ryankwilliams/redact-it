@@ -15,7 +15,8 @@ def asset_file() -> Iterator[str]:
             {
                 "foo": "bar",
                 "secret": "secret-123",
-                "apple": {"recipe": "secret-recipe"},
+                "apple": {"recipe": "secret-recipe", "foo": "bar"},
+                "abc": "bar",
             },
             f,
         )
