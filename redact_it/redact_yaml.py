@@ -2,6 +2,7 @@
 
 This module contains the core logic to redact data from yaml files.
 """
+import copy
 import glob
 from typing import Any
 
@@ -32,19 +33,20 @@ class RedactItYaml(RedactIt):
 
             try:
                 with open(file) as f:
-                    file_content: Any = self.yaml.load(f)
+                    file_content: dict[str, Any] = self.yaml.load(f)
             except FileNotFoundError as e:
                 print(f"Failed to load {file}, error: {e}")
                 continue
 
-            count: int = 0
+            file_changed: bool = False
 
-            for key, value in self.config.items():
-                if key in file_content and file_content[key] != value:
-                    file_content[key] = value
-                    count += 1
+            original_file_content = copy.copy(file_content)
+            file_content.update(self.config)
 
-            if count > 0:
+            if original_file_content != file_content:
+                file_changed = True
+
+            if file_changed:
                 if self.dry_run:
                     print(
                         f"File {file} would be redacted, disable --dry-run to redact it"
