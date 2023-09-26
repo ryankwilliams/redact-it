@@ -53,3 +53,4 @@ class TestRedactIt:
             file_content: dict[str, Any] = redact_it_yaml.yaml.load(f)
 
         assert file_content["secret"] == "redacted"
+        assert file_content["apple"]["recipe"] == "redacted"
